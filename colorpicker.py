@@ -1,6 +1,5 @@
 from tkinter import Tk, Canvas, Frame, Entry, LabelFrame, Button, PhotoImage, Label
 from PIL import Image, ImageTk, ImageDraw
-import time
 
 class SliderFunctions:
     
