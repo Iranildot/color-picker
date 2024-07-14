@@ -182,8 +182,7 @@ class SliderFunctions:
         if 0 < row < self.canvas.winfo_height():
             self.slider_mouse_x = event.x
             self.pick_color(event)
-            if self.gradient_picker != None:
-                self.gradient_picker.draw_gradient(self.color)
+            
 
     # WHEN THE USER PRESS DOWN THE LEFT MOUSE BUTTON AND MOVE THE MOUSE TO CHOOSE THE COLOR
     def pick_color(self, event):
@@ -195,13 +194,14 @@ class SliderFunctions:
             
         self.color = self.get_color(self.slider_mouse_x - self.slider_root_x)
         self.selected_cell = self.highlight()
-        if self.gradient_picker != None:
-            self.gradient_picker.draw_gradient(self.color)
+        
 
     # WHEN THE USER RELEASE THE MOUSE LEFT BUTTON
     def stop_picking(self, event):
         self.canvas.configure(cursor="arrow")
-        
+
+        if self.gradient_picker != None:
+            self.gradient_picker.draw_gradient(self.color)    
         self.gradient_picker.update_entries()
     
     def on_key_press(self, event):
@@ -389,10 +389,19 @@ class PickerFunctions:
     
     # TO GET THE HEXADECIMAL AND RGB COLOR PARAMS WHEN THE USER CHOOSE IT BASED ON CURSOR POSITION
     def get_color(self):
-        y_factor = round((1 - ((self.picker_mouse_y - self.picker_root_y) / (self.height - 1))), 2)
-        x_factor = round(((self.picker_mouse_x - self.picker_root_x) / (self.width - 1)), 2)
-        rgb_color = [int((rgb + (255 - rgb) * x_factor) * y_factor) for rgb in self.base_color["rgb"]]
-        
+        y_factor = (1 - ((self.picker_mouse_y - self.picker_root_y) / (self.height - 1)))
+        x_factor = ((self.picker_mouse_x - self.picker_root_x) / (self.width - 1))
+        rgb_color = []
+        for rgb in self.base_color["rgb"]:
+            color_value = int((rgb + (255 - rgb) * x_factor) * y_factor)
+
+            if 0 <= color_value <= 255:
+                rgb_color.append(color_value)
+            elif color_value < 0:
+                rgb_color.append(0)
+            else:
+                rgb_color.append(255)
+                
         return self.convert_color_to_dict(rgb_color)  
     
     # WHEN THE USER PRESS DOWN THE LEFT MOUSE BUTTON TO CHOOSE THE COLOR
@@ -430,8 +439,6 @@ class PickerFunctions:
     # WHEN THE USER RELEASE THE MOUSE LEFT BUTTON
     def stop_picking(self, event):
         self.canvas.configure(cursor="arrow")
-        
-        self.update_entries
                 
     # UPDATE THE GRADIENT PICKER'S MARKER
     def update_marker(self):
