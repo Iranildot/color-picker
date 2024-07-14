@@ -737,9 +737,4 @@ class ColorPicker:
     # WHEN THE USER CLICK CANCEL BUTTON
     def cancel(self):
         self.root.quit()
-        self.gradient_picker.color = None 
-    
-
-color = ColorPicker(initial_color="#555555", theme="DARK").get_color()
-
-print(color)
+        self.gradient_picker.color = None
