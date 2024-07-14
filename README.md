@@ -2,10 +2,9 @@
 
 A color picker made using python and tkinter library
 
-## Overview:
+## Overview
 
-- **SliderFunctions**
-Manages the functionality related to the color slider, including calculating color positions based on RGB values, handling mouse events for color selection, and updating the UI accordingly.
+- **SliderFunctions**:Manages the functionality related to the color slider, including calculating color positions based on RGB values, handling mouse events for color selection, and updating the UI accordingly.
 - **GradientSlider (inherits from SliderFunctions)**: Represents a graphical slider for selecting colors along a gradient. It uses methods from SliderFunctions to calculate color positions and manage UI events.
 - **PickerFunctions**: Handles the core functionality for color picking, including converting color formats (RGB to hexadecimal and vice versa), calculating color positions, and updating the UI based on user input.
 - **GradientPicker (inherits from PickerFunctions)**: Implements a color gradient picker interface using methods from PickerFunctions. It allows users to select colors from a gradient canvas and updates corresponding color representations (hexadecimal and RGB).
