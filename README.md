@@ -27,6 +27,13 @@ color = ColorPicker(initial_color="#555555", theme="DARK").get_color()
 print(color)
 ```
 
+## Output
+
+```
+PS C:\Users\User\Documents\ColorPicker> python .\test.py
+{'hexadecimal': '#D54A4A', 'rgb': [213, 74, 74]}
+```
+
 ## How the app looks like
 
 ![color picker](https://github.com/user-attachments/assets/c315673c-50bf-46f4-97a0-04e849f833d2)
