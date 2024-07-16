@@ -26,7 +26,7 @@ color = ColorPicker(initial_color="#555555", theme="DARK").get_color()
 print(color)
 ```
 
-## Output
+### Output
 
 ```
 PS C:\Users\User\Documents\ColorPicker> python .\test.py
